@@ -1,8 +1,13 @@
-/**
- * added comments to RecursiveFibonacciTest.java
- */
+/* RecursiveFibonacciTest.java */
 
 package wk1;
+
+/**
+ * A tester for the RecursiveFibonacci class.
+ * 
+ * @author Eric Bratt
+ * @version 2013-06-19
+ */
 
 import static org.junit.Assert.*;
 import junit.framework.Assert;
