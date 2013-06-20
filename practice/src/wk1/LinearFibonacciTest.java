@@ -14,6 +14,7 @@ public class LinearFibonacciTest {
 	public void testLinearFibonacci() {
 		Assert.assertFalse(lf1.equals(lf2));
 		Assert.assertFalse(lf1==lf2);
-		try { FibonacciTemplate rf3 = new LinearFibonacci(0); fail("should not reach here"); } catch (IllegalArgumentException iae) {};
+		try { @SuppressWarnings("unused")
+		FibonacciTemplate rf3 = new LinearFibonacci(0); fail("should not reach here"); } catch (IllegalArgumentException iae) {};
 	}
 }

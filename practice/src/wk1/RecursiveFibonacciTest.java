@@ -23,7 +23,8 @@ public class RecursiveFibonacciTest {
 	public void testRecursiveFibonacci() {
 		Assert.assertFalse(rf1.equals(rf2));
 		Assert.assertFalse(rf1==rf2);
-		try { FibonacciTemplate rf3 = new RecursiveFibonacci(0); fail("should not reach here"); } catch (IllegalArgumentException iae) {};
+		try { @SuppressWarnings("unused")
+		FibonacciTemplate rf3 = new RecursiveFibonacci(0); fail("should not reach here"); } catch (IllegalArgumentException iae) {};
 	}
 
 	@Test
