@@ -32,6 +32,7 @@ public class BoxTest extends TestCase {
     private int NUM_BALLS_TO_TEST = 5;
     private int BOX_CAPACITY = NUM_BALLS_TO_TEST - 1;
     private Ball[] b = null;
+    private double BALL_WEIGHT = 2.0;
     private double BALL_UNIT_VOLUME = 10.0;
     private double JUNIT_DOUBLE_DELTA = 0.0001;
     private int TRIES_FOR_BALLS_TEST = 3;
@@ -48,7 +49,7 @@ public class BoxTest extends TestCase {
 	    if (i<BOX_CAPACITY) {
 		box_capacity += (i+1)*BALL_UNIT_VOLUME;
 	    }
-	    b[i] = new Ball((i+1)*BALL_UNIT_VOLUME);
+	    b[i] = new Ball((i+1)*BALL_WEIGHT, (i+1)*BALL_UNIT_VOLUME);
 	}
 
 	// Now, we create the box once we figure out how big a box we

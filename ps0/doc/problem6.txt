@@ -1,0 +1,4 @@
+1. Why did Fibonacci fail the testThrowsIllegalArgumentException test? 
+	Because the initial if () statement used an invalid condition, I corrected the condition.
+2. The second if () statement was invalid so I corrected it.
+3. The last return statement was subtracting when it should be adding the recursive results.

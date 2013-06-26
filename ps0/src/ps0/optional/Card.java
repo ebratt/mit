@@ -1,4 +1,4 @@
-package pos0.optional;
+package ps0.optional;
 
 /**
  * Card is a class representing single playing card consisting of a value and a

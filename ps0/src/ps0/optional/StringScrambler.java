@@ -1,4 +1,4 @@
-package pos0.optional;
+package ps0.optional;
 
 public class StringScrambler {
 

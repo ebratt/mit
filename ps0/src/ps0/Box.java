@@ -4,6 +4,8 @@
 package ps0;
 
 import java.util.Iterator;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * This is a container can be used to contain Balls. The key
@@ -11,13 +13,14 @@ import java.util.Iterator;
  * finite capacity. Once a box is full, we cannot put in more Balls.
  */
 public class Box extends BallContainer {
+	private double _capacity;
 
     /**
      * Constructor that creates a new box.
      * @param capacity Total capacity of balls that this box can contain.
      */
     public Box(double capacity) {
-	// Your code goes here.
+    	_capacity = capacity;
     }
     
     /**
@@ -36,8 +39,11 @@ public class Box extends BallContainer {
      * if the box is too full to contain the new ball.
      */
     public boolean add(Ball b) {
-		return false;
-	// Your code goes here.
+    	double cap = 0;
+    	Iterator<Ball> it = this.contents.iterator();
+    	while (it.hasNext()) cap += it.next().getCapacity(); 
+		if (cap >= _capacity) return false;
+		return super.add(b);
     }
 
     /**
@@ -48,8 +54,8 @@ public class Box extends BallContainer {
      * ascending size.
      */
     public Iterator<Ball> getBallsFromSmallest() {
-		return null;
-	// Your code goes here.
+		SortedSet<Ball> s = new TreeSet<Ball>(this.contents);
+		return s.iterator();
     }
 
 }

@@ -1,0 +1,10 @@
+1. The comments to the constructor suggest it creates a ball object with the specified weight and capacity. There is parameter defined for weight. Either weight needs to be a final static field / property, it needs to be added, or the comment needs to not reference it. I decided to add it as a field, like capacity.
+2. The getCapacity() method needs to return this.capacity and not 0.
+3. Added a getWeight() method to return this.weight. 
+4. Added a BALL_WEIGHT member to the BallTest class.
+5. Included BALL_Weight to the construction of new Ball in BallTest.
+6. Added a testWeight() method to BallTest.
+7. BallContainer needs generic type.
+8. I think the approach to using an iterator is better than constantly updating a field because it requires less management of updating the field. Also, it is duplicating data and requires additional memory on the heap, which is unnecessary. 
+9. to implement getBallsFromSmallest() I decided to make Ball implement Comparable, which required me to implement compareTo(). 
+10. 
