@@ -3,14 +3,9 @@ package ps0.optional;
 public class StringScrambler {
 
 	public String reverseWordOrder(String input) {
-		if (input == null) {
-			return null;
-		}
-
-		// PLACE YOUR IMPLEMENTATION HERE
-
-		// this line added so skeleton class compiles:
-		return null;
+		if (input == null) { return null; }
+		StringBuilder sb = new StringBuilder(input);
+		return sb.reverse().toString();
 	}
 
 

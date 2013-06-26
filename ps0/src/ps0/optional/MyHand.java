@@ -3,6 +3,11 @@ package ps0.optional;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.SortedSet;
+import java.util.Stack;
+import java.util.TreeSet;
+
+import junit.framework.Assert;
 
 @SuppressWarnings("unused")
 public class MyHand {
@@ -41,7 +46,7 @@ public class MyHand {
      * arrays]
      */
     public void printHand(Collection<Card> hand) {
-	// Your code here.
+    	System.out.println(hand.toString());
     }
 
     /**
@@ -49,7 +54,10 @@ public class MyHand {
      * will print the Hand from the smallest to the largest.
      */
     public void sortSmallestToLargest() {
-	// Your code here.
+    	SortedSet<Card> sortedStoL = new TreeSet<Card>();
+    	sortedStoL.addAll(hand);
+    	hand.clear();
+    	hand.addAll(sortedStoL);
     }
 
     /**
@@ -57,14 +65,23 @@ public class MyHand {
      * will print the Hand from the largest to the smallest.
      */
     public void sortLargesttoSmallest() {
-	// Your code here.
+    	sortSmallestToLargest();
+    	Stack<Card> s = new Stack<Card>();
+    	for (Card c : hand) s.push(c);
+    	LinkedList<Card> l = new LinkedList<Card>();
+    	int i = 0;
+    	while (i < s.size()) l.add(s.pop());
+    	hand.clear();
+    	hand.addAll(l);
     }
 
     /**
      * Print only the cards in hand that are hearts
      */
     public void printHand_OnlyHearts(Collection<Card> hand) {
-	// Your code here.
+    	for (Card c : hand) {
+    		if (c.getSuit().name() == "HEARTS") System.out.println(c);
+    	}
     }
 
     /**
@@ -72,7 +89,13 @@ public class MyHand {
      * from hand
      */
     public void printHand_RemoveFaceCards(Collection<Card> hand) {
-	// Your code here.
+    	Iterator<Card> it = hand.iterator();
+    	while (it.hasNext()) {
+    		if (it.next().getValue().ordinal() > 9) {
+    			it.remove();
+    		}
+    	}
+    	System.out.println(hand);
     }
 
 }

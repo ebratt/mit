@@ -1,11 +1,14 @@
 package ps0.optional;
 
 public class Primes {
+	protected static void findPrimes(int nValues) {
+		findPrimes(0, nValues);
+	}
 
-	private static void findPrimes(int nValues) {
+	protected static void findPrimes(int start, int nValues) {
 		boolean isPrime = true;
 
-		for (int i = 2; i <= nValues; i++) {
+		for (int i = start; i <= nValues; i++) {
 			isPrime = true;
       
 			for (int j = 2; j < i; j++) {
@@ -16,26 +19,59 @@ public class Primes {
 			}
 
 			if (isPrime) {
-				System.out.println(i);
+				//System.out.println(i);
 			}
 		}
 	}
 		
 
-	private static void findPrimesFaster(int nValues) {
-		// PLACE YOUR IMPLEMENTATION HERE
-		System.out.println("The method findPrimesFaster has not been implemented");
+	private static void findPrimesFaster(int nValues) throws InterruptedException {
+		int nFirstHalf = nValues / 2;
+		PrimesRunnable pr1 = new PrimesRunnable(0, nFirstHalf);
+		Thread t1 = new Thread(pr1);
+		System.out.println("");
+		System.out.println("\t" + t1.getName() + ": " + pr1._a + " to " + pr1._b);
+		t1.start();
+		PrimesRunnable pr2 = new PrimesRunnable(nFirstHalf+1, nValues);
+		Thread t2 = new Thread(pr2);
+		System.out.println("\t" + t2.getName() + ": " + pr2._a + " to " + pr2._b);
+		t2.start();
+		t1.join();
+		t2.join();
 	}
 
 
-	private static void findPrimesEvenFaster(int nValuess) {
-		// PLACE YOUR IMPLEMENTATION HERE
-		System.out.println("The method findPrimesEvenFaster has not been implemented");
+	private static void findPrimesEvenFaster(int nValues) throws InterruptedException {
+		int nFirstQuarter = nValues / 4;
+		int nSecondQuarter = nValues / 4 * 2;
+		int nThirdQuarter = nValues / 4 * 3;
+		int nFourthQuarter = nValues;
+		PrimesRunnable pr1 = new PrimesRunnable(0, nFirstQuarter);
+		Thread t1 = new Thread(pr1);
+		System.out.println("");
+		System.out.println("\t" + t1.getName() + ": " + pr1._a + " to " + pr1._b);
+		t1.start();
+		PrimesRunnable pr2 = new PrimesRunnable(nFirstQuarter+1, nSecondQuarter);
+		Thread t2 = new Thread(pr2);
+		System.out.println("\t" + t2.getName() + ": " + pr2._a + " to " + pr2._b);
+		t2.start();
+		PrimesRunnable pr3 = new PrimesRunnable(nSecondQuarter+1, nThirdQuarter);
+		Thread t3 = new Thread(pr3);
+		System.out.println("\t" + t3.getName() + ": " + pr3._a + " to " + pr3._b);
+		t3.start();
+		PrimesRunnable pr4 = new PrimesRunnable(nThirdQuarter+1, nFourthQuarter);
+		Thread t4 = new Thread(pr4);
+		System.out.println("\t" + t4.getName() + ": " + pr4._a + " to " + pr4._b);
+		t4.start();
+		t1.join();
+		t2.join();
+		t3.join();
+		t4.join();
 	}
 
 
 
-	public static void main(String[] args) {		
+	public static void main(String[] args) throws InterruptedException {		
 		
 		// Find and print all primes between 0 and 50.
 
@@ -92,6 +128,24 @@ public class Primes {
 		findPrimesEvenFaster(50000);
 		endTime = System.currentTimeMillis();
 		System.out.println("  " + (endTime-startTime) + " milliseconds");		
+	}
+
+}
+
+
+
+
+class PrimesRunnable implements Runnable {
+	int _a, _b;
+
+	public PrimesRunnable(int a, int b) {
+		_a = a;
+		_b = b;
+	}
+
+	@Override
+	public void run() {
+		Primes.findPrimes(_a, _b);
 	}
 
 }
