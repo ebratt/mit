@@ -1,0 +1,6 @@
+1. The point is to explain - algebraically - what each function is doing and how to reuse the existing code in a recursive way.
+2. Because if this were null, trying to call a method on this would produce a null pointer exception.
+3. Because without the check for NaN in div(RatNum), the method would return an actual number (0,1). 
+4. Because this method is a builder. It has to construct a RatNum from the String itself. The only way to buld an object of a class without instantiating a class is to have a static builder. Create a constructor or a factory method to build a new RatNum from a String.
+5. Because there is nothing to check when the constructor is called. Specifically, numer and denom have not yet been defined. 
+6. 
